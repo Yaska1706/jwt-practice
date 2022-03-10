@@ -31,7 +31,6 @@ func CreateToken(username string) (*TokenDetails, error) {
 	td.RtExpires = time.Now().Add(time.Hour * 24 * 7).Unix()
 	td.RefreshUuid = uuid.NewV4().String()
 
-	os.Setenv("ACCESS_SECRET", "jdnfksdmfksd")
 	atClaims := jwt.MapClaims{}
 	atClaims["authorized"] = true
 	atClaims["access_uuid"] = td.AccessUuid
@@ -45,7 +44,6 @@ func CreateToken(username string) (*TokenDetails, error) {
 
 	}
 
-	os.Setenv("REFRESH_SECRET", "jdnfksdmfksd")
 	rtClaims := jwt.MapClaims{}
 	rtClaims["authorized"] = true
 	rtClaims["access_uuid"] = td.AccessUuid
